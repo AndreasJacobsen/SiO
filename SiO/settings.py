@@ -26,19 +26,24 @@ ALLOWED_HOSTS = []
 # Application definition
 # TODO: For vær ny app som blir laget må det dannes PATH her
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    # 'django.contrib.member',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'bootstrap3_datetime',
+    'datetimewidget',
+    # 'dedal',
+    # 'bootstrapform',
+
     'SiO.admin',
     'SiO.core',
     'SiO.member',
     # 'SiO.feeds',
 ]
-# TODO: Her ble det custom-made db-table slik at det ble Administrator istedenfor User som django oppretter default
+
 # TODO: Dette må til slik at db-table får navnet Administrator
 AUTH_USER_MODEL = 'admin.Administrator'
 

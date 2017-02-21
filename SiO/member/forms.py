@@ -1,11 +1,14 @@
 from django import forms
-# from django.contrib.auth.models import User
+# from bootstrap3_datetime.widgets import DateTimePicker
+from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
 from django.core.exceptions import ValidationError
 # from django.contrib.auth.models import AbstractUser as Admin
-from .models import Administrator
+from .models import Member
 from SiO.settings import ALLOWED_SIGNUP_DOMAINS
 
 # TODO: Her lages det validering
+
+
 def SignupDomainValidator(value):
     if '*' not in ALLOWED_SIGNUP_DOMAINS:
         try:
@@ -38,22 +41,22 @@ def ForbiddenUsernamesValidator(value):
         raise ValidationError('This is a reserved word.')
 
 
-def InvalidUsernameValidator(value):
-    if '@' in value or '+' in value or '-' in value:
-        raise ValidationError('Enter a valid username.')
+# def InvalidUsernameValidator(value):
+#     if '@' in value or '+' in value or '-' in value:
+#         raise ValidationError('Enter a valid username.')
 
 
 def UniqueEmailValidator(value):
-    if Administrator.objects.filter(email__iexact=value).exists():
+    if Member.objects.filter(email__iexact=value).exists():
         raise ValidationError('User with this Email already exists.')
 
 
-def UniqueUsernameIgnoreCaseValidator(value):
-    if Administrator.objects.filter(username__iexact=value).exists():
-        raise ValidationError('User with this Username already exists.')
+# def UniqueUsernameIgnoreCaseValidator(value):
+#     if Member.objects.filter(username__iexact=value).exists():
+#         raise ValidationError('User with this Username already exists.')
 
 
-class SignUpForm(forms.ModelForm):
+class RegForm(forms.Form):
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
@@ -62,50 +65,41 @@ class SignUpForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True)
-    association = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        max_length=30,
-        required=True)
-    union_position = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        max_length=30,
-        required=True)
-    username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        max_length=30,
-        required=True,
-        help_text='Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters')  # noqa: E261
-    password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    confirm_password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        label="Confirm your password",
-        required=True)
     email = forms.CharField(
         widget=forms.EmailInput(attrs={'class': 'form-control'}),
         required=True,
         max_length=75)
+    student_status = forms.BooleanField(
+        widget=forms.CheckboxInput(attrs={'class': 'form-control'}))
+    reg_date = forms.DateField(widget=DateWidget(usel10n=True, bootstrap_version=3))
+    gender = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        max_length=30,
+        required=True)
+    birthday = forms.DateField(widget=DateWidget(usel10n=True, bootstrap_version=3))
 
     class Meta:
-        model = Administrator
+        model = Member
         exclude = ['last_login', 'date_joined']
-        fields = ['first_name', 'last_name', 'association', 'union_position', 'username', 'email', 'password', 'confirm_password', ]
+        fields = ['first_name', 'last_name', 'email', 'student_status', 'reg_date', 'gender', 'birthday', ]
 
     def __init__(self, *args, **kwargs):
-        super(SignUpForm, self).__init__(*args, **kwargs)
-        self.fields['username'].validators.append(ForbiddenUsernamesValidator)
-        self.fields['username'].validators.append(InvalidUsernameValidator)
-        self.fields['username'].validators.append(
-            UniqueUsernameIgnoreCaseValidator)
+        super(RegForm, self).__init__(*args, **kwargs)
+        # self.fields['username'].validators.append(ForbiddenUsernamesValidator)
+        # self.fields['username'].validators.append(InvalidUsernameValidator)
+        # self.fields['username'].validators.append(
+        #     UniqueUsernameIgnoreCaseValidator)
         self.fields['email'].validators.append(UniqueEmailValidator)
         self.fields['email'].validators.append(SignupDomainValidator)
 
-    def clean(self):
-        super(SignUpForm, self).clean()
-        password = self.cleaned_data.get('password')
-        confirm_password = self.cleaned_data.get('confirm_password')
-        if password and password != confirm_password:
-            self._errors['password'] = self.error_class(
-                ['Passwords don\'t match'])
-        return self.cleaned_data
+    # def clean(self):
+    #     super(RegForm, self).clean()
+    #     password = self.cleaned_data.get('password')
+    #     confirm_password = self.cleaned_data.get('confirm_password')
+    #     if password and password != confirm_password:
+    #         self._errors['password'] = self.error_class(
+    #             ['Passwords don\'t match'])
+    #     return self.cleaned_data
+
+
 

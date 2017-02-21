@@ -4,7 +4,7 @@ from .models import Administrator
 
 from SiO.admin.forms import SignUpForm
 
-# TODO: Controller (en del av backend) for registrering av ny admin
+# TODO: Controller (en del av backend) for registrering av ny member
 
 
 def signup(request):
@@ -28,7 +28,7 @@ def signup(request):
             user = authenticate(username=username, password=password, email=email,
                                 first_name=first_name, last_name=last_name,
                                 union_position=union_position, association=association)
-            # login(request, user) TODO:Denne linjen logger inn ny admin øyeblikkelig etter registrering
+            # login(request, user) TODO:Denne linjen logger inn ny member øyeblikkelig etter registrering
             return redirect('/')
 
     else:

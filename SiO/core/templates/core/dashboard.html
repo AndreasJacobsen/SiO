@@ -13,7 +13,7 @@
      <center><h1><a>{{ user.profile.get_association_name }}</a></h1></center>
 
     <div class="container">
-        <h3>{% trans 'Ny Medlem' %}</h3>
+        <h3><a href="{% url 'membersignup' %}" class="btn btn-link">{% trans 'Ny Medlem' %}</a></h3>
     </div>
 
     <div class="container">

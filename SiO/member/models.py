@@ -1,12 +1,15 @@
 from django.db import models
 from django.conf import settings
+from dedal.decorators import crud
 
 # TODO: Her lages det database modeller Member, Association, member_asoc, Expense, member_expense
 
 
+@crud
 class Member(models.Model):
-    payment_id = models.AutoField(primary_key=True)
-    member_no = models.CharField(max_length=50, unique=True, null=True, blank=True)
+    # payment_id = models.AutoField(primary_key=True)
+    # member_no = models.IntegerField(unique=True)
+    member_no = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     email = models.CharField(max_length=50, null=True, blank=True)

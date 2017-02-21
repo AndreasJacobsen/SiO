@@ -20,7 +20,11 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/../SiO\templates" />
+        <option value="$MODULE_DIR$/SiO/templates" />
+        <option value="$MODULE_DIR$/SiO/member/templates" />
+        <option value="$MODULE_DIR$/SiO/admin/templates" />
+        <option value="$MODULE_DIR$/SiO/member/templates/member" />
+        <option value="$MODULE_DIR$/SiO/admin/templates/admin" />
       </list>
     </option>
   </component>
