@@ -1,6 +1,7 @@
 {% load staticfiles i18n %}<!DOCTYPE html>
 <html lang="en">
   <head>
+{#  {% block head %}#}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +24,7 @@
 {#    <script src="{% static 'js/SiO.js' %}"></script>#}
 {#  <script src="{% static 'js/date.js' %}"></script>#}
     {% block head %}{% endblock %}
+{#  {% endblock %}#}
   </head>
   <body>
 {#  <script>#}
@@ -42,18 +44,23 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="{% url 'dashboard' %}">Forening</a>
-            </div>
-            <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav">
-                <li>
-                  <a href="#" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">
+
+                  <a class="navbar-brand" href="#" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">
                     <span class="glyphicon glyphicon-bell"></span>
                   </a>
-                </li>
-{#                <li><a href="{% url 'feeds' %}">{% trans 'Feed' %}</a></li>#}
-{#                <li><a href="{% url 'articles' %}">{% trans 'Articles' %}</a></li>#}
-{#                <li><a href="{% url 'questions' %}">{% trans 'Q&A' %}</a></li>#}
-{#                <li><a href="{% url 'network' %}">{% trans 'Network' %}</a></li>#}
+
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav navbar-center">
+{#                <li>#}
+{#                  <a href="#" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">#}
+{#                    <span class="glyphicon glyphicon-bell"></span>#}
+{#                  </a>#}
+{#                </li>#}
+                <li><a href="{% url 'member_overview' %}">{% trans 'Medlemmer' %}</a></li>
+                <li><a href="{% url 'ChartView' %}">{% trans 'Statestikk' %}</a></li>
+                <li><a href="{% url 'admin_overview' %}">{% trans 'Administrator' %}</a></li>
+                <li><a href="{% url 'calendar' %}">{% trans 'Kalender' %}</a></li>
               </ul>
               {% if not hide_search %}
 {#                <form class="navbar-form navbar-left" role="search" action="{% url 'search' %}">#}

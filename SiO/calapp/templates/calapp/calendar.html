@@ -22,6 +22,8 @@
 
 {% block main %}
 {#<body>#}
+{#    <h1 class="logo"><a href="{% url 'home' %}">Calendar</a></h1>#}
+
 	<div id="container">
 		<div id="cal-side-bar">
 			<div id="cal-side-bar-top">
@@ -121,7 +123,7 @@
 {#				<span id="am-pm">am</span>#}
 			</div>
 			<div id="today-events">
-				<div class="top-heading">Today</div>
+				<div class="top-heading">Events Today</div>
 				<ul>
 					<li>13</li>
 					<li>14</li>
@@ -138,19 +140,19 @@
                     <li>01</li>
 				</ul>
 			</div>
-{#			<div id="weather">#}
-{#				<div class="top-heading">Weather</div>#}
-{#				<div id="weather-content">#}
-{#					<div id="weather-type">#}
-{#						<p id="weather-type-icon">#}
-{#							<i class="fa fa-cloud"></i>#}
-{#						</p>#}
-{#						<p id="weather-type-text">Cloudy</p>#}
-{#					</div>#}
-{#					<span id="weather-max">28º</span>#}
-{#					<span id="weather-min">20º C</span>#}
-{#				</div>#}
-{#			</div>#}
+			<div id="weather">
+				<div class="top-heading">Weather</div>
+				<div id="weather-content">
+					<div id="weather-type">
+						<p id="weather-type-icon">
+							<i class="fa fa-cloud"></i>
+						</p>
+						<p id="weather-type-text">Cloudy</p>
+					</div>
+					<span id="weather-max">28º</span>
+					<span id="weather-min">20º C</span>
+				</div>
+			</div>
 		</div>
 		<div id="cal-content">
 			<div id="cal-content-top">
@@ -164,15 +166,17 @@
 				<span class="month-long">November</span>
 				<span class="year">2015</span>
 				</span>
-{#				<span id="cal-content-top-icon">#}
-{#                    <span class="btn-fa" id="btn-sync" id="icon-sync">#}
-{#                        <i class="fa fa-refresh"></i>#}
-{#                    </span>#}
+				<span id="cal-content-top-icon">
+                    <span class="btn-fa" id="btn-sync" id="icon-sync">
+                        <i class="fa fa-refresh"></i>
+                    </span>
+
 {#				<span class="btn-fa">#}
 {#                        <i class="fa fa-gear"></i>#}
 {#                    </span>#}
-{#				</span>#}
-			</div>
+				</span>
+{#			</div>#}
+
 			<div id="cal-content-grid">
 				<div id="week-days">
 					<ul>
@@ -254,16 +258,21 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
+
 	<div class="form-wrapper" id="add-event-form">
-		<form>
+		<form  method="POST" role="form">
 			{% csrf_token %}
 			<input type="hidden" name="action" id="add-event-action" value="add">
 			<input type="hidden" name="eid" id="add-event-eid" value="">
 			<input type="hidden" name="synced" id="add-event-synced" value="false">
 			<ul>
 				<li class="form-li">
-					<span class="form-top" id="add-event-top">Thursday, 13 October 2016</span>
-					<span class="btn-fa btn-close form-close">
+{#					<span class="form-top" id="add-event-top">Thursday, 13 October 2016</span>#}
+                    <span class="form-top" id="add-event-top"></span>
+                    <span class="btn-fa btn-close form-close">
 						<i class="fa fa-times"></i>
 					</span>
 				</li>
@@ -289,6 +298,17 @@
                         <input id="add-event-edate" name="end_date" type="date" ><input id="add-event-etime" name="end_time" type="time" required>
                     </span>
 				</li>
+{#                <li class="form-li">#}
+{#					<label for="add-event-asoc" class="input-name"> Association</label>#}
+{#                    {{ association.id }}#}
+{#                    <select id="add-event-asoc" name="association"><option value="1">name 1 </option>  </select>#}
+{#                <select id="add-event-asoc" name="association">#}
+{#                    {% for asoc in association %}#}
+{#                    <select id="add-event-asoc" name="association"><option value="{{ asoc.id }}">{{ asoc.asoc_name }} </option>  </select>#}
+{#                        <option value="{{ asoc.id }}">{{ asoc.asoc_name }} </option>#}
+{#                     {% endfor %}#}
+{#                 </select>#}
+{#                </li>#}
 				<li class="form-li">
 					<input id="add-event-allday" type="checkbox" name="allday">
 					<label for="add-event-allday" class="input-name"> All Day</label>
@@ -303,6 +323,8 @@
 			</ul>
 		</form>
 	</div>
+
+
 	<div class="form-wrapper" id="detail-event-form">
 		<form>
 			<ul>
@@ -334,9 +356,9 @@
 	<!--
     <script src="{% static 'js/sync.js' %}"></script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
--->
+    -->
 	<script src="{% static 'js/calendar.js' %}"></script>
-{#	<script src="https://apis.google.com/js/client.js?onload=tryauth"></script>#}
+	<script src="https://apis.google.com/js/client.js?onload=tryauth"></script>
 {#</body>#}
 {#</html>#}
 {% endblock main %}

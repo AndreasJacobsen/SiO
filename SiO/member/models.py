@@ -24,7 +24,7 @@ class Member(models.Model):
     student_status = models.CharField(max_length=50, default=False)
     reg_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=50, null=True, blank=True)
-    birthday = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
     # asocnumber = models.ForeignKey('Association')
     # user = models.OneToOneField(Administrator)
 

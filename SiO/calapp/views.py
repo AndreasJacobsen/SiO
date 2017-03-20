@@ -1,14 +1,27 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.http import JsonResponse
+from django.views.generic import DeleteView, UpdateView, CreateView, ListView
 
 from datetime import datetime
 
 from SiO.CoAdmin.models import Event
+# from SiO.member.models import Association
+# from SiO.calapp.forms import CalForm
 
 
-def calendar(request):
-    return render(request, 'calapp/calendar.html', {})
+# def calendar(request):
+#     return render(request, 'calapp/calendar.html', {})
+
+class calendar(ListView):
+
+    model = Event
+    # form_class = RegForm
+    template_name = 'calapp/calendar.html'
+
+    # def get_queryset(self):
+    #     queryset = Event.objects.filter(association=self.request.user.association)
+    #     return queryset
 
 
 def event_get(request, start, end):
@@ -55,6 +68,7 @@ def event_delete(request):
 
 def event_add_edit(request):
     if request.method == 'POST':
+        # form = CalForm(request.user, request.POST)
         res = {'success': False}
 
         if paramMissing(request.POST, 'name', res) \
@@ -68,6 +82,9 @@ def event_add_edit(request):
             return JsonResponse(res)
 
         gid = request.POST.get('gid', '')
+        # asoc_pk = form.cleaned_data.get('association')
+        # asoc = Association.objects.get(id=asoc_pk.pk)
+        # or paramMissing(request.POST, 'association', res) \ som ska være ovenfor
 
         action = request.POST['action']
         name = request.POST['name']
@@ -77,6 +94,11 @@ def event_add_edit(request):
         allday = request.POST['allday'] == 'true'
         description = request.POST['description']
         synced = request.POST['synced'] == 'true'
+        # association_pk = Association.objects.filter(asoc_name=request.user.association)
+        # asoc_pk = Association.objects.get(id=association_pk.pk)
+        # asoc_pk = form.request.POST['association']
+        # asoc_pk = form.cleaned_data.get('association')
+        # asoc = Association.objects.get(id=asoc_pk.pk)
 
         if action == 'add':
             Event.objects.create(
@@ -87,7 +109,8 @@ def event_add_edit(request):
                 allday=allday,
                 description=description,
                 synced=synced,
-                gid=gid
+                gid=gid,
+                # association=asoc
             )
 
             res['success'] = True

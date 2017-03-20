@@ -6,7 +6,7 @@
   <link href="{% static 'css/signup.css' %}" rel="stylesheet">
 {% endblock head %}
 
-{% block main %}
+{% block body %}
   <h1 class="logo"><a href="{% url 'home' %}">Forening</a></h1>
   <div class="signup">
     <h2>{% trans 'Opprett forening' %}</h2>
@@ -27,4 +27,4 @@
       <center><button type="submit" class="btn btn-primary btn-lg">{% trans 'Registrer ny forening' %}</button></center>
     </form>
   </div>
-{% endblock main %}
+{% endblock body %}

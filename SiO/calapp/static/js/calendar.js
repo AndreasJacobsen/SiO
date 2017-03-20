@@ -236,7 +236,7 @@ var cal = {
 		var $lis={};
 		var $ul = cal.$todayEvents.find("ul:first");
 		$ul.children().remove();
-		for (var x = new Date(start.getTime()), i = 0; i < 13; ++i) {
+		for (var x = new Date(start.getTime()), i = 0; i < 5; ++i) {
 			var h=x.getHours(),
 				hstr = cal.getHourStr(h),
 				$li = $("<li>" + hstr + "</li>");
@@ -297,7 +297,7 @@ var cal = {
 	setCurrWeather: function (city) {
 		var url = "http://api.openweathermap.org/data/2.5/weather?";
 		url += "appid=" + cal.owAPIKey;
-		url += "&q=kolkata";
+		url += "&q=oslo";
 		url += "&units=metric";
 		console.log("curr weather", url);
 
@@ -332,6 +332,7 @@ var cal = {
 	$addEventEtime: $("#add-event-etime"),
 	$addEventAllday: $("#add-event-allday"),
 	$addEventDesc: $("#add-event-desc"),
+	$addEventAsoc: $("#add-event-asoc"),
 
 	$detailEventForm: $("#detail-event-form"),
 	$detailEventName: $("#detail-event-name"),
@@ -351,6 +352,42 @@ var cal = {
 		cal.$addEventLocation.val("");
 		cal.$addEventAllday[0].checked = false;
 		cal.$addEventDesc.val("");
+
+		// cal.$addEventAsoc.val('{{ asoc.id }}');
+		// alert (cal.$addEventAsoc.val('{{ asoc.id }}'));
+
+		// var association = $(this).val("association");
+		// var dataString = "name=" + association;
+		// var association = document.getElementById("add-event-asoc").value;
+
+
+		// alert (association);
+		// console.log(association);
+        // $.ajax ({
+         //    type: "POST",
+		// 	url: '/calendar/event/addedit/',
+         //    data: {
+         //    	association: $('#add-event-asoc').val(),
+		// 		csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+        //
+		// 	},
+		// 	// data: association,
+         //    // dataType: 'json',
+         //    success: function(data) {
+         //        // $('#association').val(data);
+         //        cal.$addEventAsoc.val(data);
+		// 		alert("Added asoc");
+        //
+		// 			// association = data.association;
+        //
+         //    },
+		// 	error: function (data) {
+         //        // console.log("error");
+		// 		alert("Something wrong");
+         //        console.log('Error:', data)
+         //    }
+		// });
+
 
 		var date = new Date($(this).data("date"));
 		cal.$addEventTop.text(date.toDateString());
@@ -409,6 +446,7 @@ var cal = {
 			end: end.toISOString(),
 			allday: cal.$addEventAllday[0].checked,
 			description: cal.$addEventDesc.val(),
+			association: cal.$addEventAsoc.val(),
 			csrfmiddlewaretoken: csrf_token
 		};
 
@@ -454,7 +492,7 @@ var cal = {
 						sync.deleteEvent(cal.eventsById[eid].gid)
 					}
 
-					cal.deleteEventLi(eid)
+					cal.deleteEventLi(eid);
 					delete cal.eventsById[eid];
 				}
 			}

@@ -10,10 +10,23 @@ header .navbar-brand {
   font-family: "Audiowide", cursive;
 }
 
-main .container {
+/*main .container {*/
 
-}
+/*}*/
 
+/*ul {*/
+  /*text-align: center;*/
+/*}*/
+
+/*.navbar .navbar-collapse {*/
+  /*text-align: center;*/
+/*}*/
+
+ .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
 .page-header {
   margin: 0;
 }

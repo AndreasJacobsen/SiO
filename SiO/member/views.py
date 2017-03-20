@@ -6,17 +6,21 @@ from django.http import HttpResponse
 from django.http import QueryDict
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, UpdateView, CreateView, ListView
+from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.views import generic
 from django.db.models import F
 from django.db.models import Q
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
 
 import json
 
 from SiO.CoAdmin.models import Administrator
 # from SiO.member.models import member_asoc
-from SiO.member.forms import RegForm, RegAsoc
+from SiO.member.forms import EditRegForm, RegAsoc, RegForm
 
 
 # TODO: Controller (en del av backend) for registrering av ny member
@@ -33,6 +37,30 @@ class member_overview(ListView):
     # form_class = RegForm
     template_name = 'member/member_overview.html'
     # queryset = Member.objects.all()
+    paginate_by = 3
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(ListView, self).get_context_data(**kwargs)
+    #     list_exam = Member.objects.all()
+    #     paginator = Paginator(list_exam, self.paginate_by)
+    #
+    #     page = self.request.GET.get('page')
+    #
+    #     try:
+    #         file_exams = paginator.page(page)
+    #     except PageNotAnInteger:
+    #         file_exams = paginator.page(1)
+    #     except EmptyPage:
+    #         file_exams = paginator.page(paginator.num_pages)
+    #
+    #     context['list_exams'] = file_exams
+    #     return context
+
+    # def search(self):
+    #     # queryset_list = Member.objects.active()
+    #     query = self.request.GET.get("q")
+    #     if query:
+    #         Member.objects.filter(first_name__icontains=query)
 
     # def get_queryset(self, *args, **kwargs):
     def get_queryset(self):
@@ -41,8 +69,22 @@ class member_overview(ListView):
         # return Member.objects.select_related(association=administrator.association)
         # return Member.objects.filter(association__in=Association.objects.filter(
         #     administrator__in=Administrator.objects.filter(asoc_name=asoc_name)))
-        queryset = Member.objects.filter(association=self.request.user.association)
-        return queryset
+        query = self.request.GET.get("q")
+        if query:
+            queryset = Member.objects.filter(association=self.request.user.association).filter(
+                Q(first_name__icontains=query) |
+                Q(last_name__icontains=query) |
+                Q(email__icontains=query)
+            )
+            return queryset
+        # elif query:
+        #     qs = Member.objects.all()
+        #     for term in query.split():
+        #         qs = qs.filter(Q(first_name__icontains=term) | Q(last_name__icontains=term))
+        #     return qs
+        else:
+            queryset = Member.objects.filter(association=self.request.user.association)
+            return queryset
 
     # def get_queryset(self):
     #     user = self.request.user
@@ -167,7 +209,7 @@ class member_overview(ListView):
 
 class member_edit(UpdateView):
     model = Member
-    form_class = RegForm
+    form_class = EditRegForm
     # pk_url_kwarg = 'member_no'
     success_url = reverse_lazy('member_overview')
     template_name = 'member/member_edit.html'
@@ -196,10 +238,10 @@ def member_signup(request):
             student_status = form.cleaned_data.get('student_status')
             reg_date = form.cleaned_data.get('reg_date')
             gender = form.cleaned_data.get('gender')
-            birthday = form.cleaned_data.get('birthday')
+            end_date = form.cleaned_data.get('end_date')
             Member.objects.create(first_name=first_name, last_name=last_name, email=email,
                                   student_status=student_status, association=asoc,
-                                  reg_date=reg_date, gender=gender, birthday=birthday)
+                                  reg_date=reg_date, gender=gender, end_date=end_date)
             # Member.objects.create(first_name=first_name, last_name=last_name, email=email,
             #                       reg_date=reg_date,)
             # Member.save()

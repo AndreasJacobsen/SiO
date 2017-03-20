@@ -21,23 +21,359 @@ lightgrey #e5e6e7
 	border: 0;
 	/*box-sizing: border-box;*/
 }
-html,
+
+.logo {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 200;
+  font-family: "Audiowide", cursive;
+  text-align: center;
+  text-shadow: 1px 1px 0 #333333;
+  line-height: 20px;
+}
+
+.logo a {
+  color: #680d0d;
+}
+
+.logo a:hover, .logo a:focus {
+  color: #0000FF;
+  text-decoration: none;
+}
+
+
+/*!*html,*!*/
+/*body {*/
+	/*width: 90vw;*/
+	/*height: 90vh;*/
+	/*font-family: "Montserrat", Arial;*/
+	/*font-size: 10pt;*/
+	/*!*overflow: hidden;*!*/
+/*}*/
+/*ul {*/
+	/*list-style: none;*/
+	/*!*width: 100%;*!*/
+	/*!*height: 100%;*!*/
+	/*margin-bottom: 1px;*/
+/*}*/
+
+/*!*ul.week-lol-lol{*!*/
+		/*!*margin-bottom: 1px;*!*/
+
+/*!*}*!*/
+
+/*#container {*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*background: #f8f8f8;*/
+	/*color: #b3b3b3;*/
+/*}*/
+
+/*#cal-content {*/
+	/*float: left;*/
+	/*!*width: calc(100% - 300px);*!*/
+	/*width: 70%;*/
+	/*height: 70%;*/
+	/*transition: 0.5s;*/
+		/*!*margin-bottom: 1px;*!*/
+
+/*}*/
+/*#cal-content-top {*/
+	/*height: 50px;*/
+	/*line-height: 40px;*/
+	/*text-align: center;*/
+	/*font-size: 1.2rem;*/
+	/*color: #d84545;*/
+	/*border-bottom: 2px solid #e5e6e7;*/
+/*}*/
+/*#cal-content-top-month {*/
+	/*display: inline-block;*/
+	/*height: 100%;*/
+/*}*/
+/*#cal-content-top-icon {*/
+	/*float: right;*/
+/*}*/
+
+/*.btn-fa {*/
+	/*margin: 0px 2px;*/
+	/*cursor: pointer;*/
+	/*display: inline-block;*/
+	/*padding: 5px;*/
+	/*border-radius: 2px;*/
+	/*transition: 0.2s;*/
+/*}*/
+/*.btn-fa:hover {*/
+	/*background: #b3b3b3;*/
+	/*color: #f8f8f8;*/
+/*}*/
+/*.btn-close {*/
+	/*color: #b3b3b3;*/
+	/*float: right;*/
+/*}*/
+
+/*#cal-content-grid {*/
+	/*font-size: 1.0rem;*/
+	/*width: 105%;*/
+	/*height: 105%;*/
+	/*!*padding: 0px 20px;*!*/
+/*}*/
+
+/*#week-days {}*/
+/*#week-days li.week-day {*/
+	/*font-size: 1.0rem;*/
+	/*float: left;*/
+	/*width: calc(100% / 7);*/
+	/*padding: 5px;*/
+	/*!*height: 60px;*!*/
+	/*line-height: 40px;*/
+	/*vertical-align: text-bottom;*/
+	/*overflow: hidden;*/
+	/*text-overflow: ellipsis;*/
+	/*border-bottom: 1px solid #e5e6e7;*/
+/*}*/
+/*#week-days li.week-day.selected {*/
+	/*background: #e5e6e7;*/
+	/*color: #777777;*/
+	/*border-bottom: 2px solid #d84545;*/
+/*}*/
+
+/*.week-row {*/
+	/*border-bottom: 1px solid #e5e6e7;*/
+	/*display: inline-block;*/
+	/*width: 100%;*/
+/*}*/
+
+/*.week-row ul.week-row-days {*/
+			/*margin-bottom: 1px;*/
+
+/*}*/
+
+/*.week-row.last {*/
+	/*border-bottom: 0;*/
+/*}*/
+/*.week-row li.week-row-cell {*/
+	/*float: left;*/
+	/*width: calc(100% / 7);*/
+	/*!*height: calc((100% - 30px) / 6);*!*/
+	/*height: 7rem;*/
+	/*!*padding: 5px;*!*/
+	/*overflow: hidden;*/
+	/*border-right: 1px solid #e5e6e7;*/
+/*}*/
+/*.week-row li.week-row-cell:hover:not(.selected) .cell-top {*/
+	/*color: #2bc493;*/
+/*}*/
+/*.week-row li.week-row-cell.disabled {*/
+	/*background: #e5e6e7;*/
+/*}*/
+/*.week-row li.week-row-cell.last {*/
+	/*border-right: 0;*/
+/*}*/
+/*.week-row li.week-row-cell.selected {*/
+	/*background: #680d0d;*/
+/*}*/
+/*.week-row li.week-row-cell.selected .cell-top {*/
+	/*color: white;*/
+/*}*/
+/*.week-row li.week-row-cell .btn-add {*/
+	/*float: right;*/
+	/*visibility: hidden;*/
+	/*transition: 0s;*/
+	/*padding: 0px;*/
+/*}*/
+/*.week-row li.week-row-cell .btn-add:hover {*/
+	/*background: transparent;*/
+	/*color: #ff8787;*/
+/*}*/
+/*.week-row li.week-row-cell:not(.disabled):hover .btn-add {*/
+	/*visibility: visible;*/
+/*}*/
+
+/*.cell-list {*/
+	/*margin-top: 5px;*/
+/*}*/
+/*.event-li {*/
+	/*cursor: pointer;*/
+	/*padding: 3px;*/
+	/*font-size: 0.75rem;*/
+	/*background: #f8f8f8;*/
+	/*border-radius: 4px;*/
+	/*border: 1px solid #2ed39e;*/
+	/*transition: 0.2s;*/
+	/*display: inline-block;*/
+    /*width: 100%;*/
+	/*color: #680d0d;*/
+/*}*/
+/*.event-li:hover {*/
+	/*border: 1px solid #ff8787;*/
+	/*background: #ff8787;*/
+	/*color: white;*/
+/*}*/
+/*.event-li .event-li-name {*/
+	/*float: left;*/
+    /*width: 80%;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*line-height: 1rem;*/
+    /*height: 1rem;*/
+    /*white-space: nowrap;*/
+/*}*/
+/*.event-li .event-li-time {*/
+	/*float: left;*/
+	/*width: 20%;*/
+/*}*/
+
+/*.form-wrapper {*/
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*left: 0;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*background: rgba(0, 0, 0, 0.3);*/
+	/*opacity: 0;*/
+	/*visibility: hidden;*/
+	/*transition: 0.5s;*/
+/*}*/
+/*.form-wrapper.visible {*/
+	/*opacity: 1;*/
+	/*visibility: visible;*/
+/*}*/
+/*.form-wrapper form {*/
+	/*padding: 10px 20px;*/
+	/*width: 300px;*/
+	/*height: 450px;*/
+	/*position: absolute;*/
+	/*top: 50%;*/
+	/*left: 50%;*/
+	/*transform: translate(-50%, -50%);*/
+	/*background: white;*/
+	/*border-radius: 3px;*/
+	/*border: 2px solid #ff8787;*/
+/*}*/
+/*.form-wrapper .form-li {*/
+	/*width: 100%;*/
+	/*padding: 8px 0px;*/
+/*}*/
+/*.form-wrapper .form-top {*/
+	/*font-size: 1.1rem;*/
+	/*color: #ff8787;*/
+/*}*/
+/*.input-name {*/
+	/*display: inline-block;*/
+	/*padding: 0 0 5px 0px;*/
+	/*font-size: 1rem;*/
+	/*color: #777777;*/
+/*}*/
+/*.input-field {*/
+	/*display: inline-block;*/
+	/*width: 100%;*/
+/*}*/
+/*.input-field input,*/
+/*textarea {*/
+	/*width: 100%;*/
+	/*padding: 5px;*/
+	/*border: 1px solid #e5e6e7;*/
+	/*border-radius: 2px;*/
+	/*color: #777777;*/
+	/*font-size: 1rem;*/
+/*}*/
+/*#add-event-name {*/
+	/*font-size: 1.2rem;*/
+/*}*/
+/*textarea {*/
+	/*height: 4rem;*/
+	/*font-family: inherit;*/
+/*}*/
+/*.input-field.datetime-field input[type="date"] {*/
+	/*font-size: 1rem;*/
+	/*width: 55%;*/
+	/*margin-right: 5%;*/
+/*}*/
+/*.input-field.datetime-field input[type="time"] {*/
+	/*font-size: 1rem;*/
+	/*width: 40%;*/
+/*}*/
+/*.form-li:last-child {*/
+	/*display: inline-block;*/
+	/*width: 100%;*/
+	/*position: absolute;*/
+	/*bottom: 20px;*/
+	/*left: 0;*/
+/*}*/
+/*.form-btn {*/
+	/*cursor: pointer;*/
+	/*float: left;*/
+	/*background-color: #e5e6e7;*/
+	/*color: #777777;*/
+	/*font-weight: bold;*/
+	/*border-radius: 3px;*/
+	/*width: 30%;*/
+	/*margin: 0 10%;*/
+	/*height: 2rem;*/
+	/*border: 2px solid transparent;*/
+	/*transition: 0.2s;*/
+/*}*/
+/*.form-btn:hover {*/
+	/*border: 2px solid #2ed39e;*/
+/*}*/
+/*.form-btn.btn-right {*/
+	/*background-color: #ff8787;*/
+	/*color: #ffffff;*/
+/*}*/
+
+/*#detail-event-form .detail-label,*/
+/*#detail-event-form .detail-info {*/
+    /*font-size: 1rem;*/
+    /*color: #b3b3b3;*/
+    /*padding: 5px 0px;*/
+/*}*/
+
+/*#detail-event-form .detail-info {*/
+    /*color: #777777;*/
+/*}*/
+
+/*#detail-event-desc {*/
+	/*max-height: 100px;*/
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+/*html,*/
 body {
-	width: 90vw;
-	height: 90vh;
+	/*width: 90vw;*/
+	/*height: 90vh;*/
 	font-family: "Montserrat", Arial;
-	font-size: 10pt;
+	/*font-size: 8pt;*/
 	/*overflow: hidden;*/
 }
 ul {
 	list-style: none;
 	/*width: 100%;*/
-	height: 100%;
+	/*height: 100%;*/
+		margin-bottom: 1px;
+
+
 }
 
 #container {
-	width: 100%;
-	height: 100%;
+  	width: 100%;
+  	/*border-radius: 7px;*/
+  	/*margin: 40px auto 0;*/
+	margin: 60px auto 0;
+	/*margin: 60px 80px 60px 60px;*/
+	/*padding: 1px;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
 	background: #f8f8f8;
 	color: #b3b3b3;
 }
@@ -50,8 +386,9 @@ ul {
 	transition: 0.5s;
 }
 #cal-content-top {
-	height: 50px;
-	line-height: 40px;
+	height: 40px;
+	width: 105%;
+	/*line-height: 30px;*/
 	text-align: center;
 	font-size: 1.2rem;
 	color: #d84545;
@@ -63,6 +400,15 @@ ul {
 }
 #cal-content-top-icon {
 	float: right;
+}
+
+#cal-content-grid {
+	font-size: 1.0rem;
+	/*width: 105%;*/
+	height: 105%;
+	padding: 1px 33px 1px 1px;
+	         /*T   R    B    L*/
+	/*border: 30px;*/
 }
 
 .btn-fa {
@@ -82,20 +428,26 @@ ul {
 	float: right;
 }
 
-#cal-content-grid {
-	font-size: 1.0rem;
-	width: 105%;
-	height: 105%;
-	padding: 0px 20px;
-}
+/*#cal-content-grid {*/
+	/*font-size: 1.0rem;*/
+	/*!*width: 105%;*!*/
+	/*height: 105%;*/
+	/*padding: 1px 30px 1px 1px;*/
+	         /*!*T   R    B    L*!*/
+	/*!*border: 30px;*!*/
+/*}*/
 
-#week-days {}
+#week-days {
+	padding: 1px 1px 1px 1px;
+	         /*T   R    B    L*/
+	width: 105%;
+}
 #week-days li.week-day {
 	font-size: 1.0rem;
 	float: left;
 	width: calc(100% / 7);
 	padding: 5px;
-	height: 60px;
+	height: 50px;
 	line-height: 40px;
 	vertical-align: text-bottom;
 	overflow: hidden;
@@ -109,9 +461,12 @@ ul {
 }
 
 .week-row {
+	text-align: left;
 	border-bottom: 1px solid #e5e6e7;
+		border-top: 1px solid #e5e6e7;
+
 	display: inline-block;
-	width: 100%;
+	width: 105%;
 }
 .week-row.last {
 	border-bottom: 0;
@@ -119,9 +474,9 @@ ul {
 .week-row li.week-row-cell {
 	float: left;
 	width: calc(100% / 7);
-	/*height: calc((100% - 30px) / 6);*/
+	/*height: calc((100% - 100px) / 6);*/
 	height: 7rem;
-	padding: 5px;
+	padding: 3px;
 	overflow: hidden;
 	border-right: 1px solid #e5e6e7;
 }
@@ -155,11 +510,13 @@ ul {
 }
 
 .cell-list {
+	/*width: 80%;*/
 	margin-top: 5px;
+	font-size: 1rem;
 }
 .event-li {
 	cursor: pointer;
-	padding: 3px;
+	/*padding: 3px;*/
 	font-size: 0.75rem;
 	background: #f8f8f8;
 	border-radius: 4px;

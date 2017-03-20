@@ -11,7 +11,8 @@ urlpatterns = [
 	url(r'^calendar/event/setsync/', views.event_setsync),
 	url(r'^calendar/event/delete/', views.event_delete),
 	url(r'^calendar/event/addedit/', views.event_add_edit),
-	url(r'^calendar/', views.calendar, name='calendar'),
+	# url(r'^calendar/', views.calendar, name='calendar'),
+	url(r'^calendar/', views.calendar.as_view(), name='calendar'),
 	# url(r'^', RedirectView.as_view(url='calendar/')),
 ]
 

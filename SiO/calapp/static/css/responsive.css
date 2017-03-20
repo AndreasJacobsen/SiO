@@ -12,7 +12,7 @@
 		height: 60px;
 		line-height: 60px;
 	}
-	.week-row li.week-row-cell {
+	#week-row li.week-row-cell {
 		height: calc((100% - 120px) / 6);
 	}
 	#cal-side-bar {

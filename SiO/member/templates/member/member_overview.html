@@ -19,6 +19,26 @@
 {#        <h2><a href="{% url 'member_signup' %}" class="btn btn-link">{% trans 'Ny Medlem' %}</a></h2>#}
     </div>
 
+    <br/>
+{#    <center><form method="GET" action="">#}
+{#    <input type="text" name="q" placeholder="Search members" value="{{ request.GET.q }}"/>#}
+{#    <input type="submit" value="Search"/>#}
+{#    </form></center>#}
+
+     <center><div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form method="GET" action="" class="search-form">
+                <div class="form-group has-feedback">
+            		<label for="search" class="sr-only">Search</label>
+            		<input type="text" class="form-control" name="q" placeholder="Search members" value="{{ request.GET.q }}"/>
+              		<span class="glyphicon glyphicon-search form-control-feedback"></span>
+            	</div>
+            </form>
+        </div>
+    </div></center>
+    <br/>
+
+
     <div class="signup">
         <ul class="list-group">
 		{% for member in object_list %}
@@ -32,7 +52,7 @@
                     <th>student_status</th>
                     <th>reg_date</th>
                     <th>gender</th>
-                    <th>birthday</th>
+                    <th>end_date</th>
                 </tr>
              </thead>
               <tbody>
@@ -44,7 +64,7 @@
                     <td>{{ member.student_status }}</td>
                     <td>{{ member.reg_date }}</td>
                     <td>{{ member.gender }}</td>
-                    <td>{{ member.birthday }}</td>
+                    <td>{{ member.end_date }}</td>
                     <td>
                         <a class="btn btn-primary btn-m" href="{% url "member_edit" pk=member.member_no %}">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -60,9 +80,32 @@
               </tr>
              </tbody>
 			  </table>
+
 		{% empty %}
 			<center><p>{% trans 'Nothing to display.' %}</p></center>
 		{% endfor %}
+
+         <center> {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}</center>
 	</ul>
  </div>
 {% endblock main %}
