@@ -1,3 +1,5 @@
+alabaster==0.7.9
+Babel==2.3.4
 behave==1.2.5
 behave-django==0.5.0
 bleach==1.5.0
@@ -11,9 +13,9 @@ coveralls==1.1
 DateTime==4.1.1
 dj-database-url==0.2.1
 dj-static==0.0.6
-Django==1.10
+django==1.10
 django-annoying==0.10.3
-django-behave==0.1.5
+django-anymail==0.9
 django-bootstrap-form==3.2
 django-bootstrap3==8.1.0
 django-bootstrap3-datetimepicker==2.2.3
@@ -31,11 +33,11 @@ django-loading==0.1.1
 django-mptt==0.8.7
 django-paintstore==0.2
 django-polymorphic==1.0.2
-django-popup-view-field==0.3.0
 django-scheduler==0.8
 django-session-security==2.5.1
 djangorestframework==3.6.2
 docopt==0.6.2
+docutils==0.13.1
 easy-thumbnails==2.3
 flake8==3.3.0
 google-api-python-client==1.6.2
@@ -43,10 +45,13 @@ gunicorn==19.6.0
 html5lib==0.9999999
 httplib2==0.10.3
 icalendar==3.11.3
+imagesize==0.7.1
+Jinja2==2.9.5
 jsmin==2.0.3
 json-utils==0.2
 loading==0.0.1
 Markdown==2.6.7
+MarkupSafe==0.23
 mccabe==0.6.1
 oauth2client==4.0.0
 olefile==0.44
@@ -60,6 +65,7 @@ pyasn1==0.2.3
 pyasn1-modules==0.0.8
 pycodestyle==2.3.1
 pyflakes==1.5.0
+Pygments==2.2.0
 pytest==3.0.6
 python-coveralls==2.9.0
 python-dateutil==2.6.0
@@ -71,6 +77,8 @@ rsa==3.4.2
 selenium==3.4.1
 simplejson==3.10.0
 six==1.10.0
+snowballstemmer==1.2.1
+Sphinx==1.5.2
 sqlparse==0.2.3
 static3==0.7.0
 Unidecode==0.4.20
