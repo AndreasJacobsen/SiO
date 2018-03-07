@@ -180,9 +180,9 @@ FILE_UPLOAD_TEMP_DIR = '/tmp/'
 FILE_UPLOAD_PERMISSIONS = 0o644
 
 ANYMAIL = {
-    # (exact settings here depend on your ESP...)
-    "MAILGUN_API_KEY": "key-197955abc889708dd670fb2c8b24b586",
-    "MAILGUN_SENDER_DOMAIN": 'test.sioforeninger.no',  # your Mailgun domain, if needed
+    #Add your own mailsettings here
+    "MAILGUN_API_KEY": "",
+    "MAILGUN_SENDER_DOMAIN": '',  # your Mailgun domain, if needed
 }
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
 DEFAULT_FROM_EMAIL = "TestSite Team <noreply@sioforeninger.no>"  # if you don't already have this in settings
