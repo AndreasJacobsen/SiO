@@ -3,10 +3,11 @@
 This project has NOT been updated in sevral years, a through security audit and update of Django version is required before you use this project.
 The project contains previously hidden mailgun keys, these are now inactive. 
 
-### Known security issues
+### Known security issues, curtisy of GitHub
 Vulnerable versions: < 4.2b1
 Patched version: 4.2b1
 In PyYAML before 4.1, the yaml.load() API could execute arbitrary code. In other words, yaml.safe_load is not used.
+
 ---------
 
 A maliciously crafted URL to a Django (1.10 before 1.10.7, 1.9 before 1.9.13, and 1.8 before 1.8.18) site using the django.views.static.serve() view could redirect to any other domain, aka an open redirect vulnerability.
